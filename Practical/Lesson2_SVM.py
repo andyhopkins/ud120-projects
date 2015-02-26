@@ -1,6 +1,7 @@
 import sys
 from class_vis import prettyPicture, output_image
 from prep_terrain_data import makeTerrainData
+from time import time
 
 import matplotlib.pyplot as plt
 import copy
@@ -20,12 +21,15 @@ clf = SVC(kernel="linear")
 #### now your job is to fit the classifier
 #### using the training features/labels, and to
 #### make a set of predictions on the test data
+t0 = time()
 clf.fit(features_train,labels_train)
+print "training time:", round(time()-t0, 3), "s"
 
 
 #### store your predictions in a list named pred
+t0 = time()
 pred = clf.predict(features_test)
-
+print "prediction time:", round(time()-t0, 3), "s"
 
 
 from sklearn.metrics import accuracy_score
