@@ -14,8 +14,7 @@ import sys
 from time import time
 sys.path.append("../tools/")
 from email_preprocess import preprocess
-sys.path.append("../Practical/")
-from class_vis import prettyPicture, output_image
+
 
 
 
@@ -60,9 +59,6 @@ for i in range(0,pred.shape[0]):
 
 print "Chris email count : ",chris
 print "Sara email count : ",sara
-
-prettyPicture(clf, features_test, labels_test)
-output_image("test.png", "png", open("test.png", "rb").read())
 
 #########################################################
 
