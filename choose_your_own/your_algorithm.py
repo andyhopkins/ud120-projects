@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import matplotlib.pyplot as plt
+from time import time
 from prep_terrain_data import makeTerrainData
 from class_vis import prettyPicture
 
@@ -31,9 +32,28 @@ plt.show()
 ### your code here!  name your classifier object clf if you want the 
 ### visualization code (prettyPicture) to show you the decision boundary
 
+from sklearn.naive_bayes import GaussianNB
+clf = GaussianNB()
 
 
+#### now your job is to fit the classifier
+#### using the training features/labels, and to
+#### make a set of predictions on the test data
+t0 = time()
+clf.fit(features_train,labels_train)
+print "training time:", round(time()-t0, 3), "s"
 
+
+#### store your predictions in a list named pred
+t0 = time()
+pred = clf.predict(features_test)
+print "prediction time:", round(time()-t0, 3), "s"
+
+
+from sklearn.metrics import accuracy_score
+acc = accuracy_score(pred, labels_test)
+
+print "Accuracy is ",acc*100,"%"
 
 
 
