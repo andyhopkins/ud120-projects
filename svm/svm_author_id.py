@@ -21,8 +21,8 @@ from email_preprocess import preprocess
 ### labels_train and labels_test are the corresponding item labels
 features_train, features_test, labels_train, labels_test = preprocess()
 
-features_train = features_train[:len(features_train)/100] 
-labels_train = labels_train[:len(labels_train)/100] 
+#features_train = features_train[:len(features_train)/100] 
+#labels_train = labels_train[:len(labels_train)/100] 
 
 
 #########################################################
@@ -43,13 +43,18 @@ print "prediction time:", round(time()-t0, 3), "s"
 
 from sklearn.metrics import accuracy_score
 acc = accuracy_score(pred, labels_test)
+print "Accuracy is ",acc
 
-print acc
+count = 0
+
+for i in range(0,pred.shape[0]):
+    if pred[i]:
+        count += 1
 
 
-print "Answer 10 : ", pred[10]
-print "Answer 26 : ", pred[26]
-print "Answer 50 : ", pred[50]
+print "Chris email count : ",count
+
+
 #########################################################
 
 
