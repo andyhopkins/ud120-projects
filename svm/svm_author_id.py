@@ -14,6 +14,9 @@ import sys
 from time import time
 sys.path.append("../tools/")
 from email_preprocess import preprocess
+sys.path.append("../Practical/")
+from class_vis import prettyPicture, output_image
+
 
 
 ### features_train and features_test are the features for the training
@@ -45,15 +48,21 @@ from sklearn.metrics import accuracy_score
 acc = accuracy_score(pred, labels_test)
 print "Accuracy is ",acc
 
-count = 0
+chris = 0
+sara = 0
 
 for i in range(0,pred.shape[0]):
     if pred[i]:
-        count += 1
+        chris += 1
+    else:
+        sara += 1
 
 
-print "Chris email count : ",count
+print "Chris email count : ",chris
+print "Sara email count : ",sara
 
+prettyPicture(clf, features_test, labels_test)
+output_image("test.png", "png", open("test.png", "rb").read())
 
 #########################################################
 
