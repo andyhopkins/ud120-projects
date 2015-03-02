@@ -34,7 +34,7 @@ plt.show()
 
 from sklearn import neighbors
 
-clf = neighbors.KNeighborsClassifier()
+clf = neighbors.KNeighborsClassifier(n_neighbors=10,weights='distance')
 
 t0 = time()
 clf.fit (features_train,labels_train)
