@@ -38,12 +38,14 @@ test_color = "r"
 ### please name it reg, so that the plotting code below picks it up and 
 ### plots it correctly
 
+from sklearn.linear_model import LinearRegression
+reg = LinearRegression()
+reg.fit(feature_train,target_train)
 
-
-
-
-
-
+print 'Slope is ',reg.coef_
+print 'Intercept is ',reg.intercept_
+print 'Score on training data',reg.score(feature_train,target_train)
+print 'Score on test data',reg.score(feature_test,target_test)
 
 ### draw the scatterplot, with color-coded training and testing points
 import matplotlib.pyplot as plt
