@@ -19,12 +19,18 @@ import pickle
 
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
-poi_count = 0
+print len(enron_data)
+
+level1Count = 0
+level2Count = 0
 
 for key in enron_data:
-    if enron_data[key]['poi'] == True:
-        poi_count += 1
+    if enron_data[key]['poi'] == True:         
+           level1Count += 1
+           if enron_data[key]['total_payments'] == 'NaN':
+               level2Count += 1
+           
+print level1Count
+print level2Count
 
-print
-print "Persons of interest on the list is ", poi_count 
 
