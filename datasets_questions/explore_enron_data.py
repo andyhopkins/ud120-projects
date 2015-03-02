@@ -19,4 +19,12 @@ import pickle
 
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
+poi_count = 0
+
+for key in enron_data:
+    if enron_data[key]['poi'] == True:
+        poi_count += 1
+
+print
+print "Persons of interest on the list is ", poi_count 
 
