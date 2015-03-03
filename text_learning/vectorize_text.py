@@ -8,6 +8,7 @@ import sys
 sys.path.append( "../tools/" )
 from parse_out_email_text import parseOutText
 
+
 """
     starter code to process the emails from Sara and Chris to extract
     the features and get the documents ready for classification
@@ -41,14 +42,13 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
         ### only look at first 200 emails when developing
         ### once everything is working, remove this line to run over full dataset
         temp_counter += 1
-        if temp_counter < 200 :
+        if temp_counter < 2000000000 :
             path = os.path.join('..', path[:-1])
             #print path
             email = open(path, "r")
             
             ### use parseOutText to extract the text from the opened email
             words = parseOutText(email)
-            print words
             ### use str.replace() to remove any instances of the words
             ### ["sara", "shackleton", "chris", "germani"]
             replaceWords = ["sara", "shackleton", "chris", "germani"]
@@ -76,5 +76,15 @@ pickle.dump( from_data, open("your_email_authors.pkl", "w") )
 
 
 ### in Part 4, do TfIdf vectorization here
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+vectorizer = TfidfVectorizer(stop_words="english")
+
+vocab_list = vectorizer.fit_transform(word_data)
+print "#feature names: ", len(vectorizer.get_feature_names())
+print vocab_list[34597]
+
+
+
 
 
