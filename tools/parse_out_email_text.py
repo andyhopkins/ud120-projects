@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 from nltk.stem.snowball import SnowballStemmer
+stemmer = SnowballStemmer("english")
 import string
 
 def parseOutText(f):
@@ -23,19 +24,23 @@ def parseOutText(f):
     ### split off metadata
     content = all_text.split("X-FileName:")
     words = ""
+    wordList = []
+    stemmedList = []
     if len(content) > 1:
         ### remove punctuation
         text_string = content[1].translate(string.maketrans("", ""), string.punctuation)
 
         ### project part 2: comment out the line below
-        words = text_string
+        #words = text_string
 
         ### split the text string into individual words, stem each word,
         ### and append the stemmed word to words (make sure there's a single
         ### space between each stemmed word)
+        wordList = text_string.split()
         
-
-
+        for word in wordList:
+            stemmedList.append(stemmer.stem(word))
+            words = ' '.join(stemmedList)
 
 
     return words
