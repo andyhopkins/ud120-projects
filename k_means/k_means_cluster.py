@@ -14,9 +14,7 @@ import matplotlib.pyplot as plt
 import sys
 sys.path.append("../tools/")
 from feature_format import featureFormat, targetFeatureSplit
-from sklearn import preprocessing
-sal_scaler = preprocessing.MinMaxScaler()
-stk_scaler = preprocessing.MinMaxScaler()
+
 
 
 
@@ -57,15 +55,7 @@ features_list = [poi, feature_1, feature_2]
 
 data = featureFormat(data_dict, features_list )
 
-print data
-
 poi, finance_features = targetFeatureSplit( data )
-
-salaries = featureFormat(data_dict, [feature_1] )
-scaler_salaries = sal_scaler.fit_transform(salaries)
-
-
-stock = featureFormat(data_dict, [feature_2] )
 
 
 ### in the "clustering with 3 features" part of the mini-project,

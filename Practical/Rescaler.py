@@ -14,6 +14,8 @@ def featureScaling(arr):
 # tests of your feature scaler--line below is input data
 
 
-data = [115, 140, 175]
-print featureScaling(data)
+data = [0.0, 200000.0, 1111258.0]
+print "Salary ",featureScaling(data)
 
+data = [0.0,1000000.0, 34348384.0]
+print "Stocks ",featureScaling(data)
