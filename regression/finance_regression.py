@@ -32,7 +32,7 @@ feature_train, feature_test, target_train, target_test = train_test_split(featur
 train_color = "b"
 test_color = "r"
 
-
+print 'feature is ',feature_test
 
 ### your regression goes here!
 ### please name it reg, so that the plotting code below picks it up and 

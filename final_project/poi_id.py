@@ -10,7 +10,7 @@ from tester import test_classifier, dump_classifier_and_data
 ### Task 1: Select what features you'll use.
 ### features_list is a list of strings, each of which is a feature name.
 ### The first feature must be "poi".
-features_list = ['poi','salary'] # You will need to use more features
+features_list = ['poi','salary','total_payments','bonus','restricted_stock',] # You will need to use more features
 
 ### Load the dictionary containing the dataset
 data_dict = pickle.load(open("final_project_dataset.pkl", "r") )
@@ -23,6 +23,8 @@ my_dataset = data_dict
 ### Extract features and labels from dataset for local testing
 data = featureFormat(my_dataset, features_list, sort_keys = True)
 labels, features = targetFeatureSplit(data)
+
+#print features
 
 ### Task 4: Try a varity of classifiers
 ### Please name your classifier clf for easy export below.

@@ -46,14 +46,14 @@ pred = clf.predict(features_test)
 acc = accuracy_score(pred,labels_test)
 
 
-print 'Length is ',len(features_train)
-print 'Accuracy is ',acc
+#print 'Length is ',len(features_train)
+#print 'Accuracy is ',acc
 
-topFeatures = clf.feature_importances_
+#topFeatures = clf.feature_importances_
 
-cnt = 0
-for value in topFeatures:
-    if value > 0.2:
-        print 'value nuber ',cnt,' value ',value,' word ', vectorizer.get_feature_names()[cnt]
-    cnt += 1
+#cnt = 0
+#for value in topFeatures:
+#    if value > 0.2:
+#        print 'value number ',cnt,' value ',value,' word ', vectorizer.get_feature_names()[cnt]
+#    cnt += 1
     

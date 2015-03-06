@@ -20,7 +20,7 @@ for key, value in data_dict.iteritems():
 
 features = ["salary", "bonus"]
 data = featureFormat(data_dict, features)
-
+print data[10]
 
 #print("Biggest Enron Outlier", data.max())
 
