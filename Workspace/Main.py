@@ -11,7 +11,7 @@
 from prep_data import makeTerrainData
 from visualization import prettyPicture, output_image
 from NBClassifier import classify
-from feature_format import featureFormat
+from feature_format import featureFormat, targetFeatureSplit
 
 import pickle
 import numpy as np
@@ -22,26 +22,31 @@ data_dict = pickle.load( open("../final_project/final_project_dataset.pkl", "r")
 data_dict.pop("TOTAL",0)
 
 
-features = ["salary", "bonus"]
-data = featureFormat(data_dict, features)
+
+#features_list = ["poi", "salary" ,  "to_messages",  "deferral_payments" ,  "total_payments",  "exercised_stock_options",  "bonus",  "restricted_stock",  "shared_receipt_with_poi",  "restricted_stock_deferred",  "total_stock_value",  "expenses",  "loan_advances",  "from_messages",  "other",  "from_this_person_to_poi", "director_fees",  "deferred_income",  "long_term_incentive", "from_poi_to_this_person"]
+features_list = ["poi", "salary" ,  "to_messages"]
+
+
+data = featureFormat(data_dict, features_list)
+
+
+poi, finance_features = targetFeatureSplit( data )
+
+print poi,"   ",finance_features
+
+#print data
+
+#features_train, labels_train, features_test, labels_test = makeTerrainData()
 
 
 
-
-
-print data
-
-features_train, labels_train, features_test, labels_test = makeTerrainData()
+#clf = classify(features_train, labels_train)
 
 
 
-clf = classify(features_train, labels_train)
-
-
-
-    ### draw the decision boundary with the text points overlaid
-prettyPicture(clf, features_test, labels_test)
-output_image("test.png", "png", open("test.png", "rb").read())
+#    ### draw the decision boundary with the text points overlaid
+#prettyPicture(clf, features_test, labels_test)
+#output_image("test.png", "png", open("test.png", "rb").read())
 
 
 
