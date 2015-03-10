@@ -37,14 +37,14 @@ data_dict.pop("KAMINSKI WINCENTY J",0)
 data_dict.pop("KEAN STEVEN J",0)
 data_dict.pop("BECK SALLY W",0)
 
-#for key in data_dict:
-#    if data_dict[key]['from_messages'] != 'NaN' and data_dict[key]['from_messages'] > 4100:
-#        print key,'',data_dict[key]['from_messages']
+for key in data_dict:
+    if data_dict[key]['exercised_stock_options'] != 'NaN':
+        print key,'',data_dict[key]['exercised_stock_options']
 
 
 ### select features to be used
-features_list = ["poi", "salary" ,  "to_messages",  "deferral_payments" ,  "total_payments",  "exercised_stock_options",  "bonus",  "restricted_stock",  "shared_receipt_with_poi",  "restricted_stock_deferred",  "total_stock_value",  "expenses",  "loan_advances",  "from_messages",  "other",  "from_this_person_to_poi", "director_fees",  "deferred_income",  "long_term_incentive", "from_poi_to_this_person"]
-#features_list = ["poi", "salary" ,  "from_messages"]
+#features_list = ["poi", "salary" ,  "to_messages",  "deferral_payments" ,  "total_payments",  "exercised_stock_options",  "bonus",  "restricted_stock",  "shared_receipt_with_poi",  "restricted_stock_deferred",  "total_stock_value",  "expenses",  "loan_advances",  "from_messages",  "other",  "from_this_person_to_poi", "director_fees",  "deferred_income",  "long_term_incentive", "from_poi_to_this_person"]
+features_list = ["poi", "salary" ,  "exercised_stock_options"]
 data = featureFormat(data_dict, features_list)
 
 ### split data between label and features
@@ -72,20 +72,20 @@ std = np.std([tree.feature_importances_ for tree in clf.estimators_],
 indices = np.argsort(importances)[::-1]
 
 # Print the feature ranking
-print("Feature ranking:")
-
-for f in range(19):
-    #print f,'\t',features_list[f],'\t\t', importances[indices[f]]
-    print("%d. feature %d (%f)" % (f + 1, indices[f], importances[indices[f]]))
-
-# Plot the feature importances of the forest
-plt.figure()
-plt.title("Feature importances")
-plt.bar(range(19), importances[indices],
-       color="r", yerr=std[indices], align="center")
-plt.xticks(range(19), indices)
-plt.xlim([-1, 19])
-plt.show()
+#print("Feature ranking:")
+#
+#for f in range(19):
+#    #print f,'\t',features_list[f],'\t\t', importances[indices[f]]
+#    print("%d. feature %d (%f)" % (f + 1, indices[f], importances[indices[f]]))
+#
+## Plot the feature importances of the forest
+#plt.figure()
+#plt.title("Feature importances")
+#plt.bar(range(19), importances[indices],
+#       color="r", yerr=std[indices], align="center")
+#plt.xticks(range(19), indices)
+#plt.xlim([-1, 19])
+#plt.show()
 
 ### Predict with classifier against test data
 pred = clf.predict(features_test)
